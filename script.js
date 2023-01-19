@@ -1,4 +1,6 @@
 let choices="rock,paper,scissor";
+let pl=0,co=0;
+let playerSelection,computerSelection,message;
 const arr=choices.split(",");
 function getComputerChoice()
 {
@@ -7,25 +9,64 @@ function getComputerChoice()
 }
 function playRound(playerSelection, computerSelection) 
 {
+    playerSelection = prompt("What's your weapon?");
+    playerSelection=playerSelection.toLowerCase();
+    console.log(`You chose ${playerSelection}`);
+    computerSelection=getComputerChoice();
+    console.log(`Computer chose ${computerSelection}`);
     if(playerSelection===computerSelection)
-    return "It's a tie :)";
+    {
+        console.log("It's a tie :)");
+        return "tie";
+    }
     else if(playerSelection==="rock" && computerSelection==="scissor")
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        return "win";
+    }
     else if(playerSelection==="rock" && computerSelection==="paper")
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
+    {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return "lose";
+    }
     else if(playerSelection==="paper" && computerSelection==="scissor")
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
+    {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return "lose";
+    }
     else if(playerSelection==="paper" && computerSelection==="rock")
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        return "win";
+    }
     else if(playerSelection==="scissor" && computerSelection==="rock")
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
+    {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return "lose";
+    }
     else if(playerSelection==="scissor" && computerSelection==="paper")
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        return "win";
+    }
 }
-let playerSelection = prompt("What's your weapon?");
-playerSelection=playerSelection.toLowerCase();
-console.log(`You chose ${playerSelection}`);
-let computerSelection=getComputerChoice();
-console.log(`Computer chose ${computerSelection}`);
-console.log(playRound(playerSelection, computerSelection));
+function game()
+{
+    for(let i=0;i<5;i++)
+    {
+        message=playRound(playerSelection, computerSelection);
+        if(message==="win")
+        pl++;
+        else if(message==="lose")
+        co++;
+    }
+    console.log(`Your score:${pl}\n Computer's score:${co}`);
+    if(pl>co)
+    console.log("Congrats! You've won the match!");
+    else if(pl<co)
+    console.log("Computer won this match.")
+    else
+    console.log("It's a tie! :)");
+}
+game();
 
