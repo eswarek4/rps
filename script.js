@@ -59,8 +59,8 @@ function game()
         pl++;
         else if(message==="lose")
         co++;
+        console.log(`Your score:${pl}\t Computer's score:${co}`);
     }
-    console.log(`Your score:${pl}\n Computer's score:${co}`);
     if(pl>co)
     console.log("Congrats! You've won the match!");
     else if(pl<co)
